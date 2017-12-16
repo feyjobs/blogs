@@ -11,6 +11,9 @@ date: 2017-07-05 10:38:34
 {% post_link PHP小case %}  <br>
 {% post_link PHP常用函数 %}  <br>
 
+## C
+{% post_link C %} <br>
+
 ## Linux
 {% post_link Linux %}  <br>
 {% post_link 常用Linux命令 %}  <br>
