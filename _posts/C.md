@@ -78,8 +78,11 @@ path:很easy，文件路径,默认在当前执行文件路径查找
 | :-------- | --------:|
 | r|   可读|
 | w|   可写,可创建|
-| a|   可追加|
-| r+|   可读取,写入|
+| a|   可追加,可创建|
+| r+|   可读写|
+| w+|   可读写,若问件存在,则初始化为0|
+| a+|   可读追加写,可以新建|
+| rb,wb,ab,ab+,a+b,wb+,w+b,ab+,a+b|   类似于上面,二进制模式|
 额 好多,剩下的自己查
 >p.s. 注意带有<font color=red>w</font>的都会把原先的内容清空掉,谨慎,谨慎
 ###### 返回参数说明
@@ -136,3 +139,37 @@ struct _IO_FILE {
 #ifdef _IO_USE_OLD_IO_FILE
 };
 ```
+好吧，有点小复杂,不深究了。
+
+##### getc putc
+```C
+int getc(FILE *stream)
+int fputc(int ch,FILE*fp)
+```
+与getchar() putchar()类似 就是把输入输出可以重定位了,不只是标准输入输出
+
+>文件末尾的问题:getc()在读取一个文件末尾的时候,将会返回特殊值EOF,所以C语言只有在读到超过文件末尾的时候才能判断文件的末尾,所以为了避免读到空文件,对文件末尾的判断要加在循环开始的地方
+
+##### puts
+```C
+int puts(const char *string);
+```
+将字符串输出到标准输出上
+##### fclose()
+```C
+int fclose( FILE *fp );
+```
+关闭一个文件流,简单易懂
+>但是也可能出现关闭失败的现象,比如移动硬盘被拔了,磁盘满了
+
+##### fprintf fscanf
+```C
+int fprintf (FILE* stream, const char*format, [argument])
+int fscanf(FILE*stream,constchar*format,[argument...]);
+```
+##### rewind
+```C
+void rewind(FILE *stream);
+```
+将文件流指针移到开始
+
