@@ -137,4 +137,8 @@ sort [-bucfMnrtk][源文件][-o 输出文件]
 | -t| 指定排序时所用的栏位分隔字符|
 | -k| 选取哪个区间进行排序| 
 
-
+## find 
+todo 
+```shell
+find . -type f -exec dos2unix {} \;
+```
