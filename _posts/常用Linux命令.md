@@ -28,6 +28,7 @@ sed [options] -f scriptfile file(s)
 ## awk
 ### 命令格式
 ```
+```
 ### case
 ```sed
 sed -i 's/db_b_rd_select/gaohao/g;s/SHYRQpHavZSB/haohao/g;s/place_waimai/gaohao_place_b_waimai/g;s/10\.19\.145\.222/10.19.161.142/g;s/7220/5100/g' place_waimai.conf
@@ -138,7 +139,6 @@ sort [-bucfMnrtk][源文件][-o 输出文件]
 | -k| 选取哪个区间进行排序| 
 
 ## find 
-todo 
 ```shell
 find . -type f -exec dos2unix {} \;
 ```

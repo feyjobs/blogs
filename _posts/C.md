@@ -159,6 +159,7 @@ int puts(const char *string);
 ```C
 int fclose( FILE *fp );
 ```
+返回值 0关闭成功 其余关闭失败
 关闭一个文件流,简单易懂
 >但是也可能出现关闭失败的现象,比如移动硬盘被拔了,磁盘满了
 
