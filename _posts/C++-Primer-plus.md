@@ -10,7 +10,7 @@ tags:
 ## Setting out to C++
 ### why must variables must be declared
 变量声明可以减少用户的拼写错误
-```
+```C++
 CastleDark = 34;
 CastleDark = CastleDank + MoreGhosts
 ```
