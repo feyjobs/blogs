@@ -12,6 +12,10 @@ date: 2017-07-05 10:38:20
 {% post_link 现代操作系统 %}  <br>
 
 ## 工程类
+<<<<<<< HEAD
+=======
+{% post_link 程序员修炼之道 %}  <br>
+>>>>>>> f6328ff52b8d5e997bd0a91aeb412feaad8f949c
 {% post_link 代码整洁之道 %}  <br>
 {% post_link Refactoring %}  <br>
 
