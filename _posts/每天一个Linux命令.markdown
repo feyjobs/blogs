@@ -5,6 +5,13 @@ categories:
 - Linux
 tags:
 ---
+## type 
+## which
+## locate
+
+## whereis
+
+## xargs
 
 ## find
 作用:在指定目录下查找**文件/文件夹**.
@@ -14,7 +21,7 @@ find [filepath] [option]
 ### option
 #### -name
 紧跟模式匹配,输出文件名符合该模式的文件
-![-name](/uploads/每天一个Linux命令/find-name.png)
+![-name](./uploads/每天一个Linux命令/find-name.png)
 #### -perm
 按照文件的读写权限属性来进行筛选
 ![-name](/uploads/每天一个Linux命令/find-perm.png)
