@@ -10,6 +10,16 @@ tags:
 ## locate
 
 ## whereis
+定位一个命令的二进制文件路径,文档路径,源码路径
+### option
+#### -b
+定位可执行文件
+![-name](/uploads/每天一个Linux命令/whereis-b.png)
+#### -s
+定位源代码文件
+#### -m
+定位文档文件
+![-name](/uploads/每天一个Linux命令/whereis-m.png)
 
 ## xargs
 
@@ -21,7 +31,7 @@ find [filepath] [option]
 ### option
 #### -name
 紧跟模式匹配,输出文件名符合该模式的文件
-![-name](./uploads/每天一个Linux命令/find-name.png)
+![-name](/uploads/每天一个Linux命令/find-name.png)
 #### -perm
 按照文件的读写权限属性来进行筛选
 ![-name](/uploads/每天一个Linux命令/find-perm.png)
@@ -93,3 +103,4 @@ find xxxxxx -exec command \;(我的版本)
 #### !
 最后一个,find可以支持反向查找,在以上匹配命令前,加上!，表示不符合这个条件的查找条件
 ![-name](/uploads/每天一个Linux命令/find-!.png)
+

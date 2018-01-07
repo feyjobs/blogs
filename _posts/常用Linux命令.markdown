@@ -27,11 +27,7 @@ sed [options] -f scriptfile file(s)
 
 ## awk
 ### 命令格式
-```
-<<<<<<< HEAD
-=======
-```
->>>>>>> f6328ff52b8d5e997bd0a91aeb412feaad8f949c
+
 ### case
 ```sed
 sed -i 's/db_b_rd_select/gaohao/g;s/SHYRQpHavZSB/haohao/g;s/place_waimai/gaohao_place_b_waimai/g;s/10\.19\.145\.222/10.19.161.142/g;s/7220/5100/g' place_waimai.conf
@@ -141,11 +137,7 @@ sort [-bucfMnrtk][源文件][-o 输出文件]
 | -t| 指定排序时所用的栏位分隔字符|
 | -k| 选取哪个区间进行排序| 
 
-<<<<<<< HEAD
-
-=======
 ## find 
 ```shell
 find . -type f -exec dos2unix {} \;
 ```
->>>>>>> f6328ff52b8d5e997bd0a91aeb412feaad8f949c
