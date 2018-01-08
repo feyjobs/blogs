@@ -2,7 +2,8 @@
 title: Hexo 
 date: 2017-12-24 17:43:10
 categories: 
-- BLOG
+- Blog
+- Tool
 tags:
 ---
 

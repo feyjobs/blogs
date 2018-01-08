@@ -3,7 +3,6 @@ title: vim
 date: 2017-07-16 14:43:10
 categories: 
 - Tool
-tags:
 ---
 
 ## 命令

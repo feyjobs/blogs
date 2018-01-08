@@ -3,7 +3,6 @@ title: 算法导论
 date: 2017-09-11 13:33:10
 categories: 
 - READ
-tags:
 ---
 
 ## 红黑树

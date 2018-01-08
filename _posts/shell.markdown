@@ -2,8 +2,7 @@
 title: Shell
 date: 2017-08-01 19:00:00
 categories: 
-- Code
-tags:
+- Linux
 ---
 
 ## 变量

@@ -2,9 +2,7 @@
 title: 算法的乐趣
 date: 2017-05-20 17:43:10
 categories: 
-- 阅读
-- 算法的乐趣
-tags:
+- Read
 ---
 ## RLE压缩算法
 - RLE压缩算法形成长度压缩算法,Run Length Encoding.

@@ -4,7 +4,7 @@ date: 2017-07-11 11:28:10
 categories: 
 - Code
 - C++
-tags:
+- Read
 ---
 
 ## Setting out to C++

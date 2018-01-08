@@ -3,8 +3,6 @@ title: 计算机系统
 date: 2017-02-03 17:43:10
 categories: 
 - READ
-- 
-tags:
 ---
 ### 磁盘存储
 #### 磁盘速度

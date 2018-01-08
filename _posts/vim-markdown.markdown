@@ -3,7 +3,6 @@ title: vim
 date: 2017-07-16 14:43:10
 categories: 
 - Tool
-tags:
 ---
 
 貌似没人介绍过这个vim-markdown插件,随便翻一翻方便查阅

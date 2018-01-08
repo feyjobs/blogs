@@ -3,7 +3,6 @@ date: 2017-07-19 13:57:00
 categories: 
 - Game
 - Pokemon
-tags:
 ---
 算是唯一一部可以重温的经典了
 
