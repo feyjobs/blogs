@@ -4,6 +4,12 @@ date: 2017-12-27 08:30:10
 categories: 
 - Linux
 ---
+## zcat
+今天(20180109)师傅让我查一手线上问题,一番折腾,随后想看师傅秀一手shell,结果师傅跪了,zcat,zgrep都没出来,故在此总结
+
+zcat会把所有的.gz文件的内容都输出到标准输出上
+zgrep可以grep单个.gz文件,师傅跪了是因为zgrep了.tar.gz文件包
+## zgrep
 ## type 
 ## which
 ## locate
