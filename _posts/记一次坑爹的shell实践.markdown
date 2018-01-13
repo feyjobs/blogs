@@ -2,9 +2,8 @@
 title: 记一次坑爹的shell实践.markdown
 date: 2018-01-14 01:46
 categories: 
--shell
--code
-tags: 
+- Shell
+- Code
 ---
 # 背景介绍
 忽然想看eva了！但是本宝宝不想看B站的阉割版(暗牧圣光大法),于是准备下2003重制版,关于为什么不下载2015蓝光版,请联系我，让我给你资源自己去下载试试。
