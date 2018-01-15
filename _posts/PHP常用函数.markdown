@@ -117,6 +117,12 @@ $ans2 = array_chunk($array, 2 true);
 功能很简单,但是遇到了一个坑,formate字符串中如果包含了需要转义的%,没有转义会爆two few arguments的错误
 转义方法 % => %%
 
+## 正则表达式
+### preg_match
+```PHP
+int preg_match ( string $pattern , string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]] )
+```
+$pattern 要搜索的模式,字符串类nn
 ## 杂
 ### 不定数量的参数的函数的写法
 ```PHP
