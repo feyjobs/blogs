@@ -241,7 +241,8 @@ location /main {
 通过执行访问控制变量的传入可以输出不同的结果,判断该值为valid还是missing
 通过ngx_lua模块的功能我们区分出了,不同的nginx的值的的功能,<font color=red>这个实现的技巧的关键是lua在读取nginx变量如果没有创建的话会初始化为nil</font>
 
-
+## 配置指令的执行顺序
+nginx处理每一个用户请求时,都是按照若干个不同阶段依次处理的
 
 
 ## 模块作用说明
@@ -284,6 +285,10 @@ lua代码中引用nginx变量的方法,ngx.var.xxxxx
 
 
 # 执行原理
+## nginx执行阶段
+### rewrite阶段
+### access阶段
+### content阶段
 
 # 拓展开发
 ## openresty
