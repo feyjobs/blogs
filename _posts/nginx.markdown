@@ -243,7 +243,126 @@ location /main {
 
 ## 配置指令的执行顺序
 nginx处理每一个用户请求时,都是按照若干个不同阶段依次处理的
+例如
+```nginx
+location /test{
+    set $a 32;
+    echo $a;
+    set $a 64;
+    echo $a;
+}
+```
+访问该请求,我们看到了结果
+64
+64
+Why!
+因为nginx指令是依赖**执行阶段**进行执行,指令的执行顺序并不依赖于配置项的先后顺序,nginx一共有11项执行顺序,最主要的几个执行阶段依次有rewrite,access,content阶段,
+echo指令在content阶段执行,set指令在rewrite阶段执行.如何验证
 
+我们重新编译nginx,使其带上debug功能,./configure --with-debug, 随后设置nginx日志打印等级为debug
+
+在重新访问刚才的url后,就会发现一大堆debug日志,通过
+```shell
+grep -E 'http (output filter|script (set|value))' error.log
+```
+即可看到一下信息
+```
+2018/02/07 18:19:51 [debug] 25367#0: *8 http script value: "32"
+2018/02/07 18:19:51 [debug] 25367#0: *8 http script set $a
+2018/02/07 18:19:51 [debug] 25367#0: *8 http script value: "64"
+2018/02/07 18:19:51 [debug] 25367#0: *8 http script set $a
+2018/02/07 18:19:51 [debug] 25367#0: *8 http output filter "/test?"
+2018/02/07 18:19:51 [debug] 25367#0: *8 http output filter "/test?"
+2018/02/07 18:19:51 [debug] 25367#0: *8 http output filter "/test?"
+```
+可以看到一条set指令对应一组http script value/set日志,在进行两次set后才执行echo指令对应的output filter日志,由此看出set指令都是在echo之前执行的
+那么怎么确定一个指令的执行阶段呢?
+* 看文档(phrase关键词)
+* 看源码(就是这么调)
+
+### rewrite阶段
+这个阶段nginx只要对一些请求进行修改,或者说声明一些后续需要使用的nginx变量,当然具体你要干啥,你很多都能干,毕竟你能嵌一个lua脚本进去.nginx_rewrite模块中的指令如果配置在location中大部分都在rewrite阶段执行,如果配置在server阶段,则运行在server_rewrite阶段,在这一小节,我们要介绍几个在rewrite阶段可以与nginx_rewrite可以混用依次执行的模块指令!
+#### set_unescape_uri
+```nginx
+location /test {
+    set $a "hello%20world";
+    set_unescape_uri $b $a;
+    set $c "$b!";
+
+    echo $c;
+}
+```
+运行结果
+```
+hello world!
+```
+查看日志
+```shell
+grep -E 'http script (value|copy|set)' error.log
+```
+
+```shell
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script value: "hello%20world"
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script set $a
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script value (post filter): "hello world"
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script set $b
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script copy: "!"
+2018/02/08 12:02:53 [debug] 19525#0: *13 http script set $c
+```
+由日志我们可以看到前两行对应set命令,中间两行对应set_unescape_uri,最后两行对应set,所以set_unescape_uri的执行顺序穿插在了两条set中间.
+
+#### set_by_lua
+这个指令有什么用呢:可以通过内联一串lua代码给nginx变量赋值.
+```nginx
+location /test {
+	set $a 32;
+	set $b 56;
+	set_by_lua $c "return ngx.var.a + ngx.var.b";
+	set $equation "$a + $b = $c";
+
+	echo $equation;
+}
+```
+运行结果
+```
+32 + 56 = 88
+```
+有上面的结果看出,set_by_lua执行在了set命令中间
+
+#### ngx_array_var
+#### ngx_encrypted_session
+---
+以上一些nginx命令可以与ngx_rewrite命令混用,上面提到的这些第三方模块都采用了特殊的技术，将它们自己的配置指令“注入”到了 ngx_rewrite 模块的指令序列中（它们都借助了 Marcus Clyne 编写的第三方模块 ngx_devel_kit),但是其余的大部分的nginx命令都无法通过这种方法,来保证执行的顺序,所以nginx配置中的大部分命令都不应该和与顺序强依赖,下面介绍一些与顺序无关的几个命令
+
+#### more_set_input_headers
+这个命令有什么用:这个命令可以在rewrite阶段改写http请求头,并且他总是运行在rewrite阶段末尾
+```nginx
+location /test {
+    set $value dog;
+    more_set_input_headers "X-Species: $value";
+    set $value cat;
+    echo "X-Species: $http_x_species";
+}
+```
+运行结果为:
+X-Species: cat
+所以这就说明了more_set_input_headers执行在了set $value cat的后面,**再单个请求阶段内部,一般会以nginx请求模块内部划分子阶段**
+
+#### rewrite_by_lua
+```nginx
+loacation test/{
+    set $a 1;
+    rewrite_by_lua "ngx.var.a = ngx.var.a + 1";
+    set $a 56;
+    echo $a;
+}
+```
+运行结果:57
+可以看出rewrite_by_lua运行在了set后面,其实他也运行在rewrite阶段的末尾,那么问题来了,如果都运行在rewrite阶段的末尾,那么是谁先运行呢,答:不知道
+### access阶段
+access阶段一般都是进行一些访问控制的命令,比如检查访问ip是否合法等等
+#### deny/allow
+这两个命令用来控制
 
 ## 模块作用说明
 ### ngx_http_geo_module
