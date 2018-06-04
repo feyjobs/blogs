@@ -95,3 +95,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 ***
 看了排行第一的解答= = 先把链表翻转= =然后该干啥干啥 
 我简直是个弱智
+
+
+## 18 4sums
+

@@ -6,7 +6,7 @@ categories:
 - PHP
 ---
 #### 闭包
-PHP闭包函数如果要使用外部变量主要要加上 use关键词/(ㄒoㄒ)/~~,又特么浪费时间
+PHP闭包函数如果要使用外部变量主要要加上 use关键词/(ㄒoㄒ)/,又特么浪费时间
 ```PHP
       int $sky = 1;
     array_filter($fairys,function love($fairy) use($sky) {
@@ -41,3 +41,7 @@ PHP闭包函数如果要使用外部变量主要要加上 use关键词/(ㄒoㄒ)
 $array = array(' '=> 12, '  '=> 12);
 ```
 是有意义的,where条件写习惯了,习惯性在两边加了空格造成了bug
+
+#### 类成员变量的定义
+1. 必须带有该成员变量权限(public,protected,private)
+2. 必须是静态的(编译期即可确认该成员变量的值)

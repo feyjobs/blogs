@@ -1,0 +1,17 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+#255.255.255.255	broadcasthost
+10.19.161.87    retail.name
+10.19.161.123   wmpass.ele.me
+10.19.153.59    be.ele.me
+#110.19.153.150   be.ele.me
+#10.19.153.150    be.ele.me
+#10.19.144.43     wmcrm.baidu.com
+#10.19.144.43     be.ele.me
+10.19.153.59 gzns-cliantiao-dcloud34.waimai.baidu.com
+10.19.161.128 retail.iwm.name
