@@ -414,3 +414,9 @@ lua代码中引用nginx变量的方法,ngx.var.xxxxx
 
 
 
+# 平滑升级
+
+# 工作问题
+## nginx bin文件替换时没有先杀死原先进程
+## nginx依赖查询
+ldd命令了解下

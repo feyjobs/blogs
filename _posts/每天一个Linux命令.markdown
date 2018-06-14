@@ -4,10 +4,64 @@ date: 2017-12-27 08:30:10
 categories: 
 - Linux
 ---
+## ifconfig
+天天在用的命令,但是没怎么仔细看懂过,貌似大多都这样
+![-name](/uploads/每天一个Linux命令/ifconfig.png)
+###  参数解析
+Link encap: 暂时理解成网络类型,常见的有 Ethernet,Local Loopback
+HWaddr:网卡地址(mac地址)
+inet addr:网络地址
+inet6 addr:ipv6地址,简单明了
+UP（代表网卡开启状态）RUNNING（代表网卡的网线被接上）MULTICAST（支持组播）MTU:1500（最大传输单元）：1500字节
+RX: 接受数据包统计 下面还有接收字节数
+TX: 发送数据包统计 下面还有发送字节数
+Bcast:广播地址
+Mask:掩码
+
+### lookback
+骚三的电脑ifconfig出来有两个lo,很好,你成功得引起了我的注意,事情要从lookback是什么说起
+简单来说,顾名思义,环回地址,就是回到原来地方的地址,我们在正常的互联网操作中,都会使用ip地址表示发送方,但是!如果你的设备处于断网状态,专业点说网络管理设备down了,那你怎么是用网络服务呢,最简单的例子,你不联网想开发个网站,不都是127.0.0.1搞起吗.
+不走网关,直接通过cpu连上本地的ip,就是环回地址。
+注意,环回地址是需要系统配置的.
+所以有很多路由器有一些奇怪的现象,ping自己居然耗时比ping别人还长,因为人家没有配环回,出去绕了一圈回来的
+## tcpdump
+总的来说,一个抓包工具
+### -i xxx
+指定监听的网卡.
+### host 
+指定监听的网站
+以豆瓣为例
+![-name](/uploads/每天一个Linux命令/tcpdump01.png)
+### port
+监视指定主机与端口的数据包
+**注意:**不知道为什么 tcp后面必须先跟port然后再写ip才能进行监听
+![-name](/uploads/每天一个Linux命令/tcpdump04.png)
+
+### src
+指定发送方host
+指定从豆瓣发过来的
+![-name](/uploads/每天一个Linux命令/tcpdump02.png)
+
+
+### host
+**指定监听的域名,也可以是ip**
+
+### -X
+
+
+
+## ldd
+nginx编译之后上传mirror启动失败,大帅哥秀了一手ldd定位编译文件问题,必须记一下
+### 定义
+ldd=(list, dynamic, dependencies)
+意思就是列出动态库依赖关系
+![-name](/uploads/每天一个Linux命令/ldd.png)
+然后你就发现了这个二进制文件所依赖的所有动态库,以及他们所在的路径,但是你会发现一个很牛逼的动态库
+**linux-vdso.so.1**他居然没有路径,好奇之下查了下资料,其实是把内核态的系统调用映射到用户态的系统空间中。
+
 ## nslookup
 >师傅秀了一手nslookup,还不告诉我。查之
 作用:查询域名
- 21
 ## zcat
 今天(20180109)师傅让我查一手线上问题,一番折腾,随后想看师傅秀一手shell,结果师傅跪了,zcat,zgrep都没出来,故在此总结
 
