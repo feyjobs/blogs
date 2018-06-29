@@ -4,6 +4,39 @@ date: 2017-12-27 08:30:10
 categories: 
 - Linux
 ---
+## ${} && $()
+### $()
+执行括号中的代码返回的结果
+#### 与``的异同
+https://blog.csdn.net/foreordination_/article/details/73740966
+### ${}
+访问括号中的变量返回的结果
+## readlink
+主要用来找出符号链接所指向的位置,可以获取到绝对路径
+### -f
+-f 选项可以递归跟随给出文件名的所有符号链接以标准化，除最后一个外所有组件必须存在
+## patchelf
+修改动态链接库的地址
+patchelf --set-interpreter gcc_lib_dir/ld-linux-x86-64.so.2 $ngx_bin_path
+## chrpath
+## pushd && popd
+两个很简单的命令,一般用于多个文件路径需要频繁切换的状况
+### pushd
+基本功能很简单:每次pushd xxxx,xxxx文件将会进入栈顶;每次pushd 栈顶两元素互换位置,再次进入栈顶元素路径
+### popd
+这个就更简单了,每次popd,栈顶元素出栈,进入当前栈顶的路劲
+![-name](/uploads/每天一个Linux命令/pushd&&popd.png)
+
+## git --diff && git --patch
+忽然发现hin尴尬,貌似公司nginx项目使用git做的diff和patch
+## diff&&patch
+看公司nginx项目发现通过diff patch的方式对源码做了修改,很有用的命令,学一下
+
+
+
+
+## route
+mirror机路由不到某台机器,大帅哥尝试用这个命令拯救一下,虽然最后失败了
 ## ifconfig
 天天在用的命令,但是没怎么仔细看懂过,貌似大多都这样
 ![-name](/uploads/每天一个Linux命令/ifconfig.png)

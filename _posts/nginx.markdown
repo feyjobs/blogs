@@ -383,6 +383,14 @@ $address为默认值,即默认情况下根据address进行匹配,也可以手动
 #### set_unescape_uri
 ### ngx_proxy
 #### proxy_pass
+### upstream
+#### zone
+```nginx
+Syntax:    zone name [size];
+Default:    —
+Context:    upstream]
+```
+用于指定共享内存zone的大小和名称,zone保存集群配置和运行时状态
 ### ngx_map
 #### map
 描述一个映射关系

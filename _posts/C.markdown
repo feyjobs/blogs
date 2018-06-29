@@ -7,6 +7,17 @@ categories:
 tags:
 ---
 
+# 常用宏
+## offsetof
+```
+#define offsetof(type,member)((size_t)&((type*)0)->member)
+```
+解析:
+0
+(type*)0    强行将0作为type类型的指针
+((type*)0)->member    获取member对象
+&((type*)0)->member         获取membe对象地址
+(size_t)&((type*)0)->member     将地址转化为size_t
 ## 文件I/O
 ### 文件
 #### 文本视图和二进制视图
