@@ -5,13 +5,13 @@ categories:
 - Shell
 - Code
 ---
-# 背景介绍
+## 背景介绍
 忽然想看eva了！但是本宝宝不想看B站的阉割版(暗牧圣光大法),于是准备下2003重制版,关于为什么不下载2015蓝光版,请联系我，让我给你资源自己去下载试试。
 悲催的宝宝开始在我的ubuntu上折腾,然后发现浏览器下载太特么慢了,15k/s的小水管,03版都下到地老天荒啊,于是决定在mac上下载然后scp到ubuntu上,关于为什么不下在mac上
 因为mac容量小= =。
 尝试一发之后，发现都很稳妥,但是还是有点慢,每个文件都scp好傻逼,想着能不能尝试crontab,这个好说,来写个脚本
 
-# 坑爹
+## 坑爹
 上代码
 ```shell
 #!/bin/sh
@@ -40,16 +40,16 @@ done
 但是！
 **为什么echo能正常运行,哪个大神求告诉!**
 
-#学到的
+##学到的
 **echo**
 echo命令是shell里常用的打印调试命令,今天尝试把echo的打印输出加点花样,我就是这么优秀～
 ```shell
 echo  "\033[字体背景色;字体颜色;字体效果m    something to print \033[0m"
 ```
-## 问题点
+### 问题点
 如果要在终端加上花样,就需要加上选项-e,也就是这样
 echo -e "\033[字体背景色;字体颜色;字体效果m    something to print \033[0m"
-## 记录点
+### 记录点
 具体各个代码表示的效果,小姑娘小伙子们们自己网上找吧！
 下面是找到的几个比较常用的,网上抄来的
 ```shell
@@ -103,4 +103,44 @@ echo -e "\033[K 清除光标到行尾的内容 \033[0m"
 echo -e "\033[?25l 隐藏光标 \033[0m"
 echo -e "\033[?25h 显示光标 \033[0m"
 ```
+## 某次文件diff
+直接上代码
+```shell
+#!/bin/bash
+i=0
+ROOT=/home/work/wmq/wmq-dw/pusher/conf/pusher/
+for line in `cat ${ROOT}pusher.yml |grep yml|awk -F: '{print $2}'|sort`
+do
+    name[${i}]=$line
+    let i=${i}+1
+done
+
+i=0
+for line in `ls -l ${ROOT}groups/|awk '{print $9}'|sort`
+do
+    files[${i}]=$line
+    let i=${i}+1
+done
+
+for file in ${files[*]}
+do
+    flag=0
+    for save in ${name[*]}
+    do
+        if [ $file == $save ];then
+            flag=1
+            break
+        fi
+    done
+    if [ $flag -eq 0 ];then
+        echo $file
+    fi
+done
+```
+* awk 修改输出换行符 'BEGIN{ORS=' '}{action}'
+* 遍历数组${array[*]}
+* 对比字符串用== 对比数组用-eq
+* for的格式注意 for do done
+* if的格式注意if ; then fi
+早日熟练掌握shell!
 
