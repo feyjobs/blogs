@@ -1,0 +1,17 @@
+ ---
+ title:20181214
+ date: 2018-12-14 11:11:49
+ categories:
+ tags:
+ ---
+## Plan
+## 行为日志
+```
+target: removed调试
+start: 11:40:05
+end: xxxxx
+thinking: xxxx
+status: xxxx
+```
+## 思考
+## 总结

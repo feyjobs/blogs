@@ -1,0 +1,22 @@
+ ---
+ title:20181218
+ date: 2018-12-18 10:58:12
+ categories:
+ tags:
+ ---
+## Plan
+## 行为日志
+```
+target: wfe mis baidu域名下限
+start: 10:59:00
+    target: huskar拓展修改
+    start: 11:49:13
+    end:
+    thinking: xxxx
+    status: xxxx
+end: xxxxx
+thinking: xxxx
+status: xxxx
+```
+## 思考
+## 总结

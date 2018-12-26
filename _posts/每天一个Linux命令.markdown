@@ -4,6 +4,61 @@ date: 2017-12-27 08:30:10
 categories: 
 - Linux
 ---
+## perf
+## top
+常用的查看系统状态的命令,楼下的**htop**貌似更吊一点,更加人性化
+![-name](/uploads/每天一个Linux命令/top.png)
+### 解释/送上到下
+top - xx:xx:xx 当前系统时间
+up xxdays xx:xx 系统已运行时间
+n user  n个用户当前登录
+load average
+> load average这个参数还是充满了文章,直译过来就是机器cpu平均负载
+> 该参数会带三个值 x,y,z 分别表示在1min,5min,15min内的机器平均负载
+> 那么机器平均负载是什么呢:特定时间内,运行队列中的平均进程数,哪些进程会被算在里面
+> 当前正在运行的进程,当前正在排队的进程,比如当前运行进程12,排队进程13,那么load就是25,load average不知道怎么算
+> load average的值为0-**1**,1的时候表示所有进程都在运行中无等待
+> 多核cpu,的load average值会与核数成正比
+> 总的来说,我们要搞清楚load average描述的是什么事情,**一段时间内,cpu所平均处理的进程数**
+> 那他和cpu的压力什么关系,两个维度,可能一个进程占用了cpu,但是挂机不干活,那么cpu的压力就打打减小了
+
+tasks 当前进程统计信息
+* total 总数
+* running 正在运行
+* sleeping 睡眠进程数
+* stop 停止进程数
+* zombie 僵尸进程数
+
+cpu cpu时间花费统计信息% 百分比信息
+* us 用户空间时间占用cpu百分比
+* sy 内核空间时间占用cpu百分比
+* ni 用户进程空间内改变过优先级的进程占用CPU百分比
+* id 空闲cpu占比
+* wa 等待输入输出的cpu时间百分比
+* hi 硬中断
+* si 软中断
+* st 实时
+
+mem 内存使用状况统计
+* total内存总量
+* used 使用的物理内存总量
+* free 空间内存总量
+* buffers  用作内核缓存的内存量
+
+swap 交换区信息
+* total 交换区总量
+* used 已使用交换分区总量
+* free 空闲的交换分区总量
+* cache 缓冲的交换分区总量
+
+重点扯一下 buffers和cached
+A buffer is something that has yet to be "written" to disk. A cache is something that has been "read" from the disk and stored for later use.
+
+### 进程描述部分
+PR 进程优先权
+
+## htop
+## ps
 ## ${} && $()
 ### $()
 执行括号中的代码返回的结果

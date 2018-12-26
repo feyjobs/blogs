@@ -1,0 +1,12 @@
+ ---
+ title:20180719
+ date: 2018-07-19 11:34:05
+ categories:
+ tags:
+ ---
+## Plan
+## 行为日志
+| Time | Activity | Status | Duration | Thinking | Interrupt|
+| :-: | :-: | :-: |  :-: | :-: | :-: |
+## 思考
+## 总结

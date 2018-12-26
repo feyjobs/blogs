@@ -1,0 +1,20 @@
+ ---
+ title:20181224
+ date: 2018-12-24 11:13:27
+ categories:
+ tags:
+ ---
+## Plan
+* 地网huskar迁移
+* c++ primer ()
+
+## 行为日志
+```
+target: huskar appid汇总
+start: 14:31:21
+end: 18:00:42
+thinking: xxxx
+status: 1
+```
+## 思考
+## 总结

@@ -153,3 +153,137 @@ switch case和其他语言一样,但是不需要在每个case后面加break nice
 
 switch后不加条件默认跟true,可以极大方便简化很多if else语句
 
+### defer
+指向一个函数,该函数会在,该声明所在的代码块执行完之后执行
+defer函数多次声明,为stack关系,先入函数后执行
+
+## 高级数据结构
+### 指针
+和C语言一样,指针指向一个值得内存地址
+和C语言一样,&操作符获取一个值得内存地址
+和C语言一样,*操作符获取某个指针指向的内存的内容
+和C语言**不一样**,Go指针不支持计算
+
+### 结构体
+声明方式
+```go
+type name struct{
+    vari   type1
+    vari2   type2
+}
+```
+结构体访问方式和C语言一样,**.**访问
+name.vari例如
+
+那么结构体指针怎么访问其中的变量呢?
+v为结构体
+p := &v
+(*p).avri可以访问
+那么可不可以p->vari呢,**不可以**,Go没有这个选项!,但是可以直接通过指针+.符号访问变量
+**p.vari**稳妥
+*******************
+初始化方式
+var (
+    v1 = name()
+    v2 = name(vari:x,vari:y)
+    v3 = name()
+    v4 = &name(1,2)
+)
+
+### 数组
+声明方式
+```go
+var name [size]tye
+```
+初始化方式
+申明后一个一个赋值
+或者
+name := [size]type{xx,xx,xx,xx}大括号里元素数量可以和size不一致会用默认类型初始化
+### slice
+slice是可以视为一个数组的动态视图，在实际使用中比数组来的更加实用
+数组方法声明&&初始化方法
+```go
+var a []T = array[low:high]
+```
+* **注意,low,high都是数组下标，而且l包含low，不包含high 真撒比**
+* low,high在初始化的时候都可以不填，都会默认上下届
+> slice不存储任何数据，slice仅仅是一个数组的视图，你对slice所做的任何修改都会造成数组的修改，以及相对应的该数组其他slice元素的修改
+
+自定义声明&&初始化方法
+```go
+r := []bool{true,false,true,false}
+```
+
+* len() slice含有元素的多少
+* cap() 从slice第一个元素算起，array与多少个元素
+* 空slice nil
+## 接口&&方法
+### method
+method是啥,一种特殊的函数,这种函数在声明时带上了receiver
+```go
+func (receiver Type)funcName() () {
+
+}
+```
+这样在方法内可以访问receiver,receiver调用方法也可以直接用receiver.funcName的方法
+
+
+## 并发(貌似是go语言最主要的特性)
+```go
+go f(x,y,z)
+```
+就会新开一个协程运行这个f(x,y,z)函数,所有协程运行于相同的地址空间,所以访问同一块内存时必须保证是同步的
+**sync** package提供了有用的相关功能,虽然你可能是不会经常用到,毕竟还有其他更常用的
+
+### channels
+channels是一种通道数据结构,允许你通过**<-**操作符放入数据,取出数据
+```go
+ch <- v   //v放入ch
+v <- ch   //从ch取出数据赋值给v
+```
+**********************************
+channels申明初始化方法
+```go
+ch := make(chan int)
+```
+以上声明方法为不带缓冲区的channels声明方法,程序执行的时候回阻塞在读和写channels的调用处
+ch<- -<ch **读写管道都会阻塞直到另一边执行完成**
+#### 有缓冲channels
+声明方法
+```go
+ch := make(chan int,size)
+```
+有缓冲就很好理解了,**在缓冲没满的情况下,发送方就不会阻塞,在缓冲区没空的情况下,接收方就不会阻塞**
+
+#### close && range
+**发送方**可以选择在适当时候close一个channel
+range ch 遍历channel中所有元素,直道遇到close
+```go
+a,ok := <-ch
+//ok返回bool值,判断当前channel是否被close
+```
+#### select
+select表达式有点像switch case语句
+```go
+select {
+case xxxx:
+    xxx
+case xxxx:
+    xxx
+default:
+    xxxxx
+}
+```
+如果两个都可以执行,随便挑一个,好过分
+### sync.mutex
+sync包提供了一个变量sync.mutex锁可以对
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+ ---
+ title:20181217
+ date: 2018-12-17 10:58:49
+ categories:
+ tags:
+ ---
+## Plan
+### work
+* removed
+* huskar拓展小流量
+
+### study
+* radix tree
+## 行为日志
+```
+target: 积分系统
+start: 11:04:27
+end: 11:42:33
+thinking: 
+status: 3
+
+target: removed
+start: 11:43:23
+end: 
+thinking: 
+status: 
+```
+## 思考
+* 语言自举
+* 图灵完备
+* 无聊看看各语言的编译实现,愈发感受到编译原理的重要性
+* slab内存机制,nginx内存no memory问题
+## 总结
+
