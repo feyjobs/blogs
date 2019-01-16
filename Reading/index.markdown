@@ -8,7 +8,8 @@ date: 2017-07-05 10:38:20
 {% post_link 算法导论 %}  <br>
 
 ## 系统类
-{% post_link CSAPP %}  <br>
+{% post_link csapp/CSAPP %}  <br>
+{% post_link csapp/csapp_ans %}  <br>
 {% post_link 现代操作系统 %}  <br>
 
 ## 工程类
