@@ -107,8 +107,15 @@ tcpdump -i lo tcp port 2333
 iptables -I INPUT -p tcp --dport 2333 -s 127.0.0.1 -j DROP
 ```
 屏蔽127.0.0.1:2333的网络连接,然后就等着下面这一幕
-![handshake](/uploads/nginx/failed.jpg)
 - 兄弟 你还好吗
+![handshake](/uploads/nginx/anzhong.jpg)
 - +1s 兄弟 你还好吗
+![handshake](/uploads/nginx/anzhong.jpg)
 - 死了,发送**rst**报文,表示异常终止
+![handshake](/uploads/nginx/failed.jpg)
 
+最后
+```shell
+iptables -F
+```
+恢复机器路由状况
