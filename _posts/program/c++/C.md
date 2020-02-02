@@ -7,6 +7,8 @@ categories:
 tags:
 ---
 
+# 关键词
+{% post_link program/c++/restrict restrict%}
 # 常用宏
 ## offsetof
 ```
@@ -185,4 +187,5 @@ void rewind(FILE *stream);
 ```
 将文件流指针移到开始
 
-
+# 日常问题排查
+{% post_link program/c++/memory 内存问题%}
