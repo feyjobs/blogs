@@ -9,6 +9,14 @@ tags:
 
 # 关键词
 {% post_link program/c++/restrict restrict%}
+
+# 官方库
+## limits
+
+### CHAR_BIT
+CHAR_BIT 宏描述了当前系统一个byte包含几个bit
+
+
 # 常用宏
 ## offsetof
 ```

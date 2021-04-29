@@ -174,6 +174,8 @@ zgrep可以grep单个.gz文件,师傅跪了是因为zgrep了.tar.gz文件包
 
 ## xargs
 
+## traceroute
+
 ## find
 作用:在指定目录下查找**文件/文件夹**.
 ```shell

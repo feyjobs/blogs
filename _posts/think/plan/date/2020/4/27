@@ -1,0 +1,9 @@
+---
+title: 27
+date: 2020-04-27 11:04
+categories: 
+tags: 
+---
+
+# fragment
+* 域名是域名 Host是Host, 域名是在服务访问时的网络定位信息, Host头是一个http头部信息, 所以访问https网站, 指定Host妄图替代域名很傻逼
